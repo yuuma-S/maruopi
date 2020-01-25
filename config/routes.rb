@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  get 'end_users/index'
+  get 'end_users/new'
+  get 'end_users/create'
+  get 'end_users/edit'
+  get 'end_users/update'
+  get 'end_users/destroy'
+devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 root to: 'questions#index'
