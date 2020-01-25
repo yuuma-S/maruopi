@@ -24,7 +24,7 @@ resources :end_users do
       get :followers, on: :member
 end
 
-resources :questions, except: [:update] do
+resources :questions do
     resources :comments, only: [:create, :destroy]
     resources :answers, except: [:index] do
   		resource :favorites, only: [:create, :destroy]
