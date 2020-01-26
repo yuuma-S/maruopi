@@ -45,9 +45,10 @@ class EndUsersController < ApplicationController
   def destroy
     @end_user.destroy
     respond_to do |format|
-      format.html { redirect_to end_user_url, notice: 'End_user was successfully destroyed.' }
+      format.html { redirect_to end_users_path, notice: 'End_user was successfully destroyed.' }
       format.json { head :no_content }
     end
+    flash[:notice] = "end_userを削除しました。"
   end
 
   private
