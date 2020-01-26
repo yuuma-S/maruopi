@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
+<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"}, class: "logout" %>
 
 <h1>Questions</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>End user</th>
@@ -15,7 +16,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.end_user_id %></td>
+        <td><%= question.end_user.email %></td>
         <td><%= question.title %></td>
         <td><%= question.body %></td>
         <td><%= link_to 'Show', question %></td>

@@ -9,7 +9,41 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
   <body>
+    <% if end_user_signed_in? %>
+              <span class="social">
+                <%= link_to  end_user_path(current_end_user.id) do %>
+                <i class="fas fa-home">Home</i>
+                <% end %>
+              </span>
+
+              <span class="social">
+                <%= link_to  end_users_path  do %>
+                <i class="fas fa-user">User</i>
+                <% end %>
+              </span>
+
+              <span class="social">
+                <%= link_to questions_path do %>
+                <i class="fas fa-book">question</i>
+                <% end %>
+              </span>
+
+              <span class="social">
+                <%= link_to destroy_end_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt">Logout</i>
+                <% end %>
+              </span>
+    <% end %>
+
+
+
     <%= yield %>
   </body>
+</div>
+</div>
+</div>
 </html>
