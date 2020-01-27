@@ -1,19 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+  	<div class="panel-body">
+    	<div class="col-xs-6">
+    		<div class="panel panel-info">
+    			<div class="panel-heading">
+					<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>End user:</strong>
-  <%= @question.end_user_id %>
-</p>
+					<span>
+					  <strong>質問者:</strong>
+					  <%= @question.end_user.name %>
+					</span>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+					<span>
+					  <strong>Title:</strong>
+					  <%= @question.title %>
+					</span>
+					</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @question.body %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+					<p>
+					  <strong>質問内容</strong><br>
+					  <%= @question.body %>
+					</p>
+				</div>
+					<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
+					<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
+			</div>
+		</div>
+	</div>
+</div>
