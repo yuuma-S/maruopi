@@ -1,32 +1,39 @@
-<p id="notice"><%= notice %></p>
-<%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"}, class: "logout" %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p id="notice"><%= notice %></p>
+      
 
-<h1>Questions</h1>
+      <h1>Questions</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>End user</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>質問者</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.end_user.email %></td>
-        <td><%= question.title %></td>
-        <td><%= question.body %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @questions.each do |question| %>
+            <tr>
+              <td><%= question.end_user.name %></td>
+              <td><%= question.title %></td>
+              <td><%= question.body %></td>
+              <td><%= link_to 'Show', question %></td>
+              <td><%= link_to 'Edit', edit_question_path(question) %></td>
+              <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<br>
+      <br>
 
-<%= link_to 'New Question', new_question_path %>
+      <%= link_to '新しく質問する', new_question_path, class: "btn btn-default" %>
+
+    </div>
+  </div>
+</div>
