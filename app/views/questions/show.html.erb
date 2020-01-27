@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-  	<div class="panel-body">
+  	<div class="row">
+  		<h3>質問詳細 & 回答一覧</h3>
     	<div class="col-xs-6">
     		<div class="panel panel-info">
     			<div class="panel-heading">
@@ -15,15 +15,40 @@
 					  <strong>Title:</strong>
 					  <%= @question.title %>
 					</span>
-					</div>
-
+				</div>
+				<div class="panel-body">
 					<p>
 					  <strong>質問内容</strong><br>
 					  <%= @question.body %>
 					</p>
 				</div>
+			</div>
 					<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
 					<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
+		</div>
+		<div class="col-xs-6">
+    		<div class="panel panel-info">
+    			<div class="panel-heading">
+					<p id="notice"><%= notice %></p>
+
+						<% @question.answers.each do |answer| %>
+							<strong>回答者</strong>
+							<%= answer.end_user.name %>
+
+							<span>
+						  		<strong>Title:</strong>
+								<%= answer.title %>
+							</span>
+							</div>
+							<div class="panel-body">
+								<p>
+								  <strong>回答内容</strong><br>
+								  <%= answer.body %>
+								</p>
+							</div>
+						<% end %>
+					
+				</div>
 			</div>
 		</div>
 	</div>
