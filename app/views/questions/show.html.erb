@@ -1,10 +1,10 @@
 <div class="container">
   	<div class="row">
   		<h3>質問詳細 & 回答一覧</h3>
+  		<p id="notice"><%= notice %></p>
     	<div class="col-xs-6">
-    		<div class="panel panel-info">
+    		<div class="panel panel-info" style="height: 400px;">
     			<div class="panel-heading">
-					<p id="notice"><%= notice %></p>
 
 					<span>
 					  <strong>質問者:</strong>
@@ -23,15 +23,16 @@
 					</p>
 				</div>
 			</div>
-					<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
-					<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
+			<%= link_to '回答する', new_question_answer_path(@question), class: "btn btn-default" %> |
+			<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
+			<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
 		</div>
 		<div class="col-xs-6">
-    		<div class="panel panel-info">
-    			<div class="panel-heading">
-					<p id="notice"><%= notice %></p>
-
-						<% @question.answers.each do |answer| %>
+			<p><%= @question.answers.count %>件の回答があります。<p>
+			<% if @question.answers.count != 0 %>
+	    		<div class="panel panel-info">
+					<% @question.answers.each do |answer| %>
+						<div class="panel-heading" style="margin-bottom: 10px;">
 							<strong>回答者</strong>
 							<%= answer.end_user.name %>
 
@@ -39,17 +40,23 @@
 						  		<strong>Title:</strong>
 								<%= answer.title %>
 							</span>
-							</div>
-							<div class="panel-body">
-								<p>
-								  <strong>回答内容</strong><br>
-								  <%= answer.body %>
-								</p>
-							</div>
-						<% end %>
-					
+						</div>
+						<div class="panel-body">
+							<p>
+							  <strong>回答内容</strong><br>
+							  <%= answer.body %>
+							</p>
+							<%= link_to '詳細',question_answer_path(@question, @answers),class: "btn btn-default" %>
+						</div>
+					<% end %>
+					<% else %>
+					<div class="well" style="text-align: center">
+						<strong>まだ回答がありません</strong><br>
+						<br>
+						<%= link_to '回答する', new_question_answer_path(@question), class: "btn btn-default" %>
+					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
