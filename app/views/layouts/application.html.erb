@@ -10,64 +10,84 @@
     <script src="https://kit.fontawesome.com/0617b3186b.js" crossorigin="anonymous"></script>
   </head>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
         <body>
-          <% if end_user_signed_in? %>
-            <span class="social">
-              <%= link_to  end_user_path(current_end_user.id) do %>
-                <i class="fas fa-home">Home</i>
-              <% end %>
-            </span>
+          <!--header-->
+          <header>
+          <!--logo画像-->
+            <!-- <h1 class="logo">
+              <img src="./image/logo.png">
+            </h1>     -->
+          <!--メニュー-->
+          <div class="end-user-header-nav">
+            <% if end_user_signed_in? %>
+              <span class="social">
+                <%= link_to  end_user_path(current_end_user.id) do %>
+                  <i class="fas fa-home">Home</i>
+                <% end %>
+              </span>
 
-            <span class="social">
-              <%= link_to  end_users_path  do %>
-                <i class="fas fa-user">User</i>
-              <% end %>
-            </span>
+              <span class="social">
+                <%= link_to  end_users_path  do %>
+                  <i class="fas fa-user">User</i>
+                <% end %>
+              </span>
 
-            <span class="social">
-              <%= link_to questions_path do %>
-                <i class="fas fa-book">question</i>
-              <% end %>
-            </span>
+              <span class="social">
+                <%= link_to questions_path do %>
+                  <i class="fas fa-book">question</i>
+                <% end %>
+              </span>
 
-            <span class="social">
-              <%= link_to destroy_end_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"} do %>
-                <i class="fas fa-sign-out-alt">Logout</i>
-              <% end %>
-            </span>
+              <span class="social">
+                <%= link_to destroy_end_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"} do %>
+                  <i class="fas fa-sign-out-alt">Logout</i>
+                <% end %>
+              </span>
 
-          <% else %>
+            <% else %>
 
-            <span class="social">
-              <%= link_to root_path do %>
-               <i class="fas fa-home">Home</i>
-              <% end %>
-            </span>
+              <span class="social">
+                <%= link_to root_path do %>
+                 <i class="fas fa-home">Home</i>
+                <% end %>
+              </span>
 
-            <span class="social">
-              <%= link_to about_path do %>
-               <i class="fas fa-user">About</i>
-              <% end %>
-            </span>
+              <span class="social">
+                <%= link_to about_path do %>
+                 <i class="fas fa-user">About</i>
+                <% end %>
+              </span>
 
-            <span class="social">
-              <%= link_to new_end_user_registration_path do %>
-                <i class="fas fa-user-plus">新規登録</i>
-              <% end %>
-            </span>
+              <span class="social">
+                <%= link_to new_end_user_registration_path do %>
+                  <i class="fas fa-user-plus">新規登録</i>
+                <% end %>
+              </span>
 
-            <span class="social">
-              <%= link_to new_end_user_session_path do %>
-                <i class="fas fa-sign-in-alt">ログイン</i>
+              <span class="social">
+                <%= link_to new_end_user_session_path do %>
+                  <i class="fas fa-sign-in-alt">ログイン</i>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
+
+            <div class="form-box">
+              <%= form_tag(questions_path,:method => 'get') do %>
+                <%= text_field_tag(:search, "", {placeholder: "質問内容"}) %>
+                <%= submit_tag '検索', :name => nil %>
               <% end %>
-            </span>
-          <% end %>
-          <%= yield %>
+            </div>
+
+            </header>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= yield %>
+                </div>
+              </div>
+            </div>
         </body>
-      </div>
-    </div>
-  </div>
+
 </html>
