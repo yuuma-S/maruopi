@@ -30,6 +30,7 @@
 		<div class="col-xs-6">
 			<p><%= @question.answers.count %>件の回答があります。<p>
 			<% if @question.answers.count != 0 %>
+
 	    		<div class="panel panel-info">
 					<% @question.answers.each do |answer| %>
 						<div class="panel-heading" style="margin-bottom: 10px;">
@@ -56,6 +57,7 @@
 						<%= link_to '回答する', new_question_answer_path(@question), class: "btn btn-default" %>
 					</div>
 				</div>
+
 			<% end %>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+devise_for :admins
 devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -12,11 +13,9 @@ namespace :admin do
 
 	resources :questions, only: [:index, :show, :destroy] do
 	    resources :comments, only: [:destroy]
+	    resources :answers, only: [:index, :show, :destroy]
 	end
 
-	resources :answers, only: [:show, :destroy] do
-
-	end
 end
 
 # end_userのルーティング
