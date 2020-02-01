@@ -33,7 +33,8 @@ class AnswersController < ApplicationController
 
   def show
     @qusetion = Question.find(params[:question_id])
-    @answers = Answer.all
+    @answer = @qusetion.answers
+
   end
 
   def edit
