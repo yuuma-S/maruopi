@@ -23,8 +23,11 @@
               <td><%= question.title %></td>
               <td><%= question.body %></td>
               <td><%= link_to 'Show', question %></td>
-              <td><%= link_to 'Edit', edit_question_path(question) %></td>
-              <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% if current_end_user.nil? %>
+              <% elsif question.end_user.id == current_end_user.id %>
+                <td><%= link_to '編集', edit_question_path(question) %></td>
+                <td><%= link_to '削除', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

@@ -11,10 +11,15 @@
 		<tr>
 			<td><%= @end_user.name %></td>
 			<td><%= @end_user.email %></td>
-			<td><%= link_to '削除', end_user_path(@end_user), method: :delete %></td>
+			<% if current_end_user.id == @end_user.id %>
+				<td><%=link_to "退会する", end_user_path(@end_user), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"} %></td>
+			<% elsif current_end_user.admin? %>
+				<td><%=link_to "退会させる", end_user_path(@end_user), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"} %></td>
+				<% end %>
 		</tr>
 	</tbody>
 </table>
-
-<%= link_to 'edit', edit_end_user_path(@end_user) %> |
-<%= link_to 'Back', end_users_path %>
+<% if current_end_user.id == @end_user.id %>
+	<%= link_to 'edit', edit_end_user_path(@end_user), class: "btn btn-default" %> |
+	<%= link_to 'Back', end_users_path, class: "btn btn-default" %>
+<% end %>
