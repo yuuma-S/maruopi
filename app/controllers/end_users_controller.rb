@@ -51,6 +51,16 @@ class EndUsersController < ApplicationController
     flash[:notice] = "end_userを削除しました。"
   end
 
+  def follows
+    end_user = EndUser.find(params[:id])
+    @end_users = end_user.followings
+  end
+
+  def followers
+    end_user = EndUser.find(params[:id])
+    @end_users = end_user.followers
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_end_user

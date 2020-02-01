@@ -1,0 +1,11 @@
+<% @end_users.each do |end_user| %>
+  <hr>
+  <p><span>フォロワー: </span><%= link_to end_user.name, end_user_path(end_user.id) %></p>
+    <% if current_end_user != end_user %>
+        <% if end_user.followed_by?(current_end_user) %>
+            <p><%=link_to "フォロー済み", end_user_relationships_path(end_user.id), method: :delete %></p>
+        <% else %>
+            <p><%=link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %></p>
+        <% end %>
+    <% end %>
+<% end %>
