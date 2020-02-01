@@ -1,28 +1,39 @@
 
 
 <h2>end_user</h2>
-			<div class="col-sm-12">
-				<table class="table float-lg-right">
-					<thead>
+		<p><%=link_to "フォロー", follows_end_user_path(current_end_user.id) %></p>
+		<p><%=link_to "フォロワー", followers_end_user_path(current_end_user.id) %></p>
+<div class="col-sm-12">
+	<table class="table float-lg-right">
+		<thead>
 
-				  		<tr>
-						    <th>name</th>
-						    <th>email</th>
-						    <th></th>
-						    <th></th>
-						</tr>
-					</thead>
-					<tbody>
-					<% @end_users.each do |end_user| %>
-					    <tr>
-						    <td><%= end_user.name %></td>
-						    <td><%= end_user.email %></td>
-						    <td><%=link_to "show", end_user_path(end_user.id), class: "btn btn-default" %></td>
-						    <td><% if current_end_user.admin? %>
-						    	<%=link_to "退会させる", end_user_path(end_user), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"} %></td>
-						    <% end %>
-						</tr>
-					 <% end %>
-					</tbody>
-				</table>
-			</div>
+	  		<tr>
+			    <th>name</th>
+			    <th>email</th>
+			    <th></th>
+			    <th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @end_users.each do |end_user| %>
+		    <tr>
+			    <td><%= end_user.name %></td>
+			    <td><%= end_user.email %></td>
+			    <td><%=link_to "show", end_user_path(end_user.id), class: "btn btn-default" %></td>
+			    <td>
+					<% if current_end_user != end_user %>
+						<% if end_user.followed_by?(current_end_user) %>
+							<p><%=link_to "フォロー済み", end_user_relationships_path(end_user.id), method: :delete %></p>
+						<% else %>
+							<p><%=link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %></p>
+							<% end %>
+					<% end %>
+					</td>
+			    <td><% if current_end_user.admin? %>
+			    	<%=link_to "退会させる", end_user_path(end_user), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"} %></td>
+			    <% end %>
+			</tr>
+		 <% end %>
+		</tbody>
+	</table>
+</div>
