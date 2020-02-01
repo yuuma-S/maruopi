@@ -41,6 +41,10 @@
 						  		<strong>Title:</strong>
 								<%= answer.title %>
 							</span>
+
+							<div id="favorites_buttons">
+							<%= render partial: "favorites/favorite", locals: {question_answers: answer, answer: @answer} %>
+							</div>
 						</div>
 						<div class="panel-body">
 							<p>
@@ -50,7 +54,7 @@
 							<%= link_to '詳細',question_answer_path(@question, @answers),class: "btn btn-default" %>
 						</div>
 					<% end %>
-					<% else %>
+				<% else %>
 					<div class="well" style="text-align: center">
 						<strong>まだ回答がありません</strong><br>
 						<br>

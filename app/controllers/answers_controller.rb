@@ -32,8 +32,9 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @qusetion = Question.find(params[:question_id])
+    @qusetion = Question.find(question_id: params[:question_id], answer_id: params[:answer_id] )
     @answer = @qusetion.answers
+
 
   end
 
