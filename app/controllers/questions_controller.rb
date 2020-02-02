@@ -6,12 +6,18 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+  #================================= 検索機能 =========================================
+    @q = Question.ransack(params[:q])
+    @search_questions = @q.result(distinct: true).recent
+    # ransackをインストールしたのでransackメソッドが使用可。
+    # 現場で使える Ruby on Rails 5速習実践ガイド p292
+  #================================= 検索機能 =========================================
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answer = Answer.find(params[:id])
+    @answer = Answer.find_by(params[:answer_id])
     @answers = @question.answers.all
   end
 
