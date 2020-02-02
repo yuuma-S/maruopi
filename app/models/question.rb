@@ -4,4 +4,5 @@ class Question < ApplicationRecord
 	has_many :answers
 	has_many :comments
 
+	scope :recent, -> { order(created_at: :desc) }
 end
