@@ -2,7 +2,7 @@
   	<div class="row">
   		<h3>質問詳細 & 回答一覧</h3>
   		<p id="notice"><%= notice %></p>
-<!-- =========================== 質問内容表示部分 ================================= -->
+    <!-- ======================= 質問内容表示部分 ================================= -->
     	<div class="col-xs-6">
     		<div class="panel panel-info" style="height: 400px;">
     			<div class="panel-heading">
@@ -28,9 +28,9 @@
 			<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
 			<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
 		</div>
-<!-- ============================================================================= -->
+    <!-- ========================================================================= -->
 
-<!-- =========================== 回答内容表示部分 =================================== -->
+    <!-- ======================== 回答内容表示部分 ================================== -->
 		<div class="col-xs-6">
 			<p><%= @question.answers.count %>件の回答があります。<p>
 			<% if @question.answers.count != 0 %>
@@ -45,10 +45,11 @@
 						  		<strong>Title:</strong>
 								<%= answer.title %>
 							</span>
-
-							<div id="favorites_buttons">
-							<%= render partial: "favorites/favorite", locals: {question_answers: @question, answer: answer} %>
+							<!-- ============ いいね機能 ==================== -->
+							<div id="favorites_buttons_<%= answer.id %>">
+							<%= render partial: 'favorites/favorite', locals: {question_answers: @question, answer: answer} %>
 							</div>
+							<!-- ========================================== -->
 						</div>
 						<div class="panel-body">
 							<p>
@@ -68,6 +69,6 @@
 
 			<% end %>
 		</div>
-<!-- ============================================================================= -->
+    <!-- ======================================================================= -->
 	</div>
 </div>
