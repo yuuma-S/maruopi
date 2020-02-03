@@ -17,7 +17,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answer = Answer.find_by(params[:answer_id])
     @answers = @question.answers.all
   end
 
