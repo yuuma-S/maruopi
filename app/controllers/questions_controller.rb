@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @answers = @question.answers.all
+    @search = Answer.ransack(params[:q])
   end
 
   # GET /questions/new
