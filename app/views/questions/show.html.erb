@@ -2,7 +2,7 @@
   	<div class="row">
   		<h3>質問詳細 & 回答一覧</h3>
   		<p id="notice"><%= notice %></p>
-    <!-- ======================= 質問内容表示部分 ================================= -->
+    	<!-- ======================= 質問内容表示部分 ============================ -->
     	<div class="col-xs-6">
     		<div class="panel panel-info" style="height: 400px;">
     			<div class="panel-heading">
@@ -28,14 +28,21 @@
 			<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
 			<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
 		</div>
-    <!-- ========================================================================= -->
+    	<!-- ================================================================== -->
 
-    <!-- ======================== 回答内容表示部分 ================================== -->
+    	<!-- ==================== 回答内容表示部分 =============================== -->
 		<div class="col-xs-6">
 			<p><%= @question.answers.count %>件の回答があります。<p>
 			<% if @question.answers.count != 0 %>
 
 	    		<div class="panel panel-info">
+	    			<!-- ================== ソート機能 ========================= -->
+					<%= search_form_for @search, url: search_question_answers_path(@question) ,html: { method: :post } do |f| %>
+					<%= f.select( :sorts, { 'いいね!の多い順': 'favorites_count desc','新しい順': 'updated_at desc' } , { selected: params[:sorts] }, { onchange: 'this.form.submit()'} ) %>
+					<%= f.submit '完了' %>
+					<% end %>
+					<!-- ===================================================== -->
+
 					<% @question.answers.each do |answer| %>
 						<div class="panel-heading" style="margin-bottom: 10px;">
 							<strong>回答者</strong>
@@ -69,6 +76,6 @@
 
 			<% end %>
 		</div>
-    <!-- ======================================================================= -->
+    <!-- ====================================================================== -->
 	</div>
 </div>

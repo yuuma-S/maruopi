@@ -22,15 +22,18 @@ end
 
 # end_userのルーティング
 resources :end_users do
-    resource :relationships, only: [:create, :destroy]
+  resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
 end
 
 resources :questions do
-    resources :comments, only: [:create, :destroy]
-    resources :answers, except: [:index] do
-  		resource :favorites, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
+  resources :answers, except: [:index] do
+		resource :favorites, only: [:create, :destroy]
+    collection do
+      match 'search' => 'answers#search', via: [:get, :post]
+    end
 	end
 end
 
