@@ -6,19 +6,6 @@ devise_for :end_users
 root to: 'questions#index'
 get '/about' => 'home#about'
 
-# adminのルーティング
-resources :admins, only: [:index]
-
-namespace :admin do
-	resources :end_users, only: [:index, :show, :destroy]
-end
-
-namespace :admin do
-	resources :questions, only: [:index, :show, :destroy] do
-	    resources :comments, only: [:destroy]
-	    resources :answers, only: [:index, :show, :destroy]
-	end
-end
 
 # end_userのルーティング
 resources :end_users do
