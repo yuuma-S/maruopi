@@ -9,7 +9,7 @@ class Answer < ApplicationRecord
 
     # =================== favoriteのレコード数をカウント ==================
     ransacker :favorites_count do
-    	query = '(SELECT COUNT(favorites.answere_id) FROM favorites where favoritesanswere_id = answers.id GROUP BY favorites.answer_id)'
+    	query = '(SELECT COUNT(favorites.answere_id) FROM favorites where favorites.answere_id = answers.id GROUP BY favorites.answer_id)'
     	Arel.sql(query)
   	end
   	# =================================================================
