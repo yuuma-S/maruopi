@@ -39,6 +39,8 @@ class AnswersController < ApplicationController
   def search
     params[:q] = { sorts: 'id desc' }
     @search = Answer.ransack(params[:q])
+    @question = Question.find(params[:question_id])
+    
   end
 
 
