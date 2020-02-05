@@ -37,13 +37,10 @@
 
 	    		<div class="panel panel-info">
 	    			<!-- ================== ソート機能 ========================= -->
-					<%= search_form_for @search, url: question_search_path(@question) ,html: { method: :get } do |f| %>
-					<%= f.select :sorts, { 'いいね!の多い順': 'favorites_count desc','新しい順': 'updated_at desc' } , { selected: params[:sorts] } %>
-					<%= f.submit '完了' %>
-					<% end %>
+
 					<!-- ===================================================== -->
 
-					<% @question.answers.each do |answer| %>
+					<% @answers.each do |answer| %>
 						<div class="panel-heading" style="margin-bottom: 10px;">
 							<strong>回答者</strong>
 							<%= answer.end_user.name %>
