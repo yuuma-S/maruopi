@@ -15,12 +15,11 @@ resources :end_users do
 end
 
 resources :questions do
+  get 'search' => 'questions#search'
   resources :comments, only: [:create, :destroy]
   resources :answers, except: [:index] do
 		resource :favorites, only: [:create, :destroy]
-    collection do
-      match 'search' => 'answers#search', via: [:get, :post]
-    end
+
 	end
 end
 

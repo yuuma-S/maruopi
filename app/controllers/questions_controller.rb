@@ -21,6 +21,29 @@ class QuestionsController < ApplicationController
     @search = Answer.ransack(params[:q])
   end
 
+  # def search
+  #   params[:q] = { sorts: params[:sorts] }
+  #   @search = Answer.ransack(params[:q])
+  #   @question = Question.find(params[:question_id])
+  #   @answers = @question.answers.all
+  #   render :show
+  # end
+  def search
+    @question = Question.find(params[:question_id])
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Answer.ransack(params[:q])
+      @answers = @search.result
+      render :show
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Answer.ransack()
+      @answers = @question.answers
+      render :show
+    end
+  end
+
   # GET /questions/new
   def new
     @question = Question.new
@@ -71,6 +94,10 @@ class QuestionsController < ApplicationController
     end
   end
 
+  
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -81,4 +108,8 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:end_user_id, :title, :body)
     end
+    def search_params
+    params.require(:q).permit(:sorts)
+    # 他のパラメーターもここに入れる
+  end
 end
