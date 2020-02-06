@@ -27,7 +27,33 @@
 			<%= link_to '回答する', new_question_answer_path(@question), class: "btn btn-default" %> |
 			<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %> |
 			<%= link_to 'Back', questions_path, class: "btn btn-default"  %>
+    	<!-- ================================================================== -->
+
+    	<!-- ==================== コメント表示部分 =============================== -->
+			<div class="panel panal-info">
+			    <% @question.comments.each do |comment| %>
+			        <p class="comment">
+			            <div class="comment-body bb">
+			                <div class="comment-text">
+			                    <div class="comment-author clearfix">
+			                        <a href="#" class="link-author"><%= comment.end_user.name %></a>
+			                        <span class="comment-meta">
+			                          <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+			                        </span>
+			                    </div>
+			                    <div class="comment-entry"><%= comment.body %></div>
+			                </div>
+			            </div>
+			        </p>
+			    <% end %>
+			</div>
+
+			<%= form_for [@question, @comment] do |f| %>
+			    <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "質問に対するコメントをここに書いてください" %>
+				<%= f.submit "送信する", class: "btn btn-default btn-base-1 mt-20 pull-right" %>
+			<% end %>
 		</div>
+
     	<!-- ================================================================== -->
 
     	<!-- ==================== 回答内容表示部分 =============================== -->
