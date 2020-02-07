@@ -1,0 +1,2 @@
+$("textarea").val("");
+$("#comment_index_<%= @question.id %>").html("<%= j(render partial: 'questions/comment', locals: {question: @question}) %>");
