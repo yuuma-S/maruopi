@@ -30,26 +30,12 @@
     	<!-- ================================================================== -->
 
     	<!-- ==================== コメント表示部分 =============================== -->
-			<div class="panel panal-info">
-			    <% @question.comments.each do |comment| %>
-			        <p class="comment">
-			            <div class="comment-body bb">
-			                <div class="comment-text">
-			                    <div class="comment-author clearfix">
-			                        <a href="#" class="link-author"><%= comment.end_user.name %></a>
-			                        <span class="comment-meta">
-			                          <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
-			                        </span>
-			                    </div>
-			                    <div class="comment-entry"><%= comment.body %></div>
-			                </div>
-			            </div>
-			        </p>
-			    <% end %>
-			</div>
-
-			<%= form_for [@question, @comment] do |f| %>
-			    <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "質問に対するコメントをここに書いてください" %>
+			<div id="comment_index_<%= @question.id %>"><br>
+				<%= render partial: 'questions/comment', locals: {question: @question} %>
+			</div><br>
+			<%= form_with model:[@question, @comment],data: {remote: true} do |f|  %>
+				<%= f.text_area :body, rows:'5', class: "form-control",placeholder: "質問に対するコメントをここに書いてください" %>
+				<br>
 				<%= f.submit "送信する", class: "btn btn-default btn-base-1 mt-20 pull-right" %>
 			<% end %>
 		</div>
@@ -102,3 +88,4 @@
     <!-- ====================================================================== -->
 	</div>
 </div>
+
