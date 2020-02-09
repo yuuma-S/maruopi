@@ -1,11 +1,40 @@
-<% @end_users.each do |end_user| %>
-  <hr>
-  <p><span>フォロワー: </span><%= link_to end_user.name, end_user_path(end_user.id) %></p>
-    <% if current_end_user != end_user %>
-        <% if end_user.followed_by?(current_end_user) %>
-            <p><%=link_to "フォロー済み", end_user_relationships_path(end_user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %></p>
-        <% end %>
-    <% end %>
-<% end %>
+<h2>フォロワー　一覧</h2>
+<div class="clearfix">
+	<div class="col-sm-8 col-sm-offset-2">
+
+			<div class="well well-sm col-sm-4 pull-right" style="text-align: center;">
+			<%= @end_users.count %>人からフォローされています。</div>
+		<table class="table">
+			<!-- ====================== フォローユーザー一覧  ============== -->
+			<thead>
+				<tr>
+					<th style="width: 600px;">ユーザー名</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<% @end_users.each do |end_user| %>
+				<tbody>
+					<tr>
+						<td style="height: 50px;"><%= link_to end_user.name, end_user_path(end_user.id) %></td>
+						<td>
+						    <% if current_end_user != end_user %>
+						        <% if end_user.followed_by?(current_end_user) %>
+						            <p><%=link_to "フォローを外す", end_user_relationships_path(end_user.id), method: :delete,class: " btn btn-danger" %></p>
+						         <% else %>
+									<p><%=link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-default" %></p>
+						        <% end %>
+						    <% end %>
+						</td>
+					</tr>
+				</tbody>
+			<% end %>
+			<!-- ======================================================= -->
+		</table>
+		<hr>
+	</div>
+</div>
+
+<div style="text-align: center;">
+	<%= link_to 'back', end_users_path, class: "btn btn-default" %>
+</div>
