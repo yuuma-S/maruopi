@@ -13,11 +13,6 @@
         <body>
           <!--header-->
           <header>
-          <!--logo画像-->
-            <!-- <h1 class="logo">
-              <img src="./image/logo.png">
-            </h1>     -->
-          <!--メニュー-->
           <div class="end-user-header-nav">
             <% if end_user_signed_in? %>
               <span class="social">
@@ -72,13 +67,6 @@
             <% end %>
           </div>
 
-            <div class="form-box">
-              <%= form_tag(questions_path,:method => 'get') do %>
-                <%= text_field_tag(:search, "", {placeholder: "質問内容"}) %>
-                <%= submit_tag '検索', :name => nil %>
-              <% end %>
-            </div>
-
             </header>
 
             <div class="container">
@@ -88,6 +76,12 @@
                 </div>
               </div>
             </div>
+            <footer>
+              <%= render 'layouts/footer' %>
+            </footer>
         </body>
+
+
+
 
 </html>
