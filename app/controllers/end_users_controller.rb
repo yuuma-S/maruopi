@@ -24,7 +24,8 @@ class EndUsersController < ApplicationController
   end
 
   def show
-    
+    @questions = @end_user.questions
+
   end
 
   def edit
