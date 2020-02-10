@@ -8,9 +8,9 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   #================================= 検索機能 =========================================
     @q = Question.ransack(params[:q])
-    @search_questions = @q.result(distinct: true).recent
+    @search_questions = @q.result(distinct: true).page(params[:page]).per(3)
     # ransackをインストールしたのでransackメソッドが使用可。
-    # 現場で使える Ruby on Rails 5速習実践ガイド p292
+    # 現場で使える Ruby on Rails 5速習実践ガイド p292, p318
   #================================= 検索機能 =========================================
   end
 

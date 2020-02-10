@@ -28,26 +28,6 @@
           </tr>
         </thead>
 
-<!-- ======================= 検索していない場合　============================= -->
-<!--         <tbody>
-          <% @questions.each do |question| %>
-            <tr>
-              <td><%= question.end_user.name %></td>
-              <td><%= question.title %></td>
-              <td><%= question.body %></td>
-              <td><%= link_to 'Show', question %></td>
-              <% if current_end_user.nil? %>
-                <td></td>
-                <td></td>
-              <% elsif question.end_user.id == current_end_user.id %>
-                <td><%= link_to '編集', edit_question_path(question) %></td>
-                <td><%= link_to '削除', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody> -->
-<!-- ======================= 検索していない場合　============================= -->
-
 
 <!-- ======================= 検索した時のレビュー ============================ -->
         <tbody>
@@ -68,8 +48,12 @@
           <% end %>
         </tbody>
       </table>
-<!-- ======================= 検索した時のレビュー ============================ -->
+<!-- ===================================================================== -->
       <br>
+      <div class="sm-3">
+        <p><%= paginate @search_questions %></p>
+        <p><%= page_entries_info @search_questions %></p>
+      </div>
 
       <%= link_to '新しく質問する', new_question_path, class: "btn btn-default" %>
 
