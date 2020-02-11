@@ -1,62 +1,66 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <p id="notice"><%= notice %></p>
+    <div class="row">
+        <div class="col-xs-12">
+            <p id="notice"><%= notice %></p>
 
 <!-- ========================= 検索フォーム =============================== -->
-      <h1>Questions</h1>
-      <%= search_form_for @q, class: 'mb-5' do |f| %>
-        <div class="from-group.row">
-          <%= f.label :title_cont, "タイトル", class:'col-sm-2 col-form-label' %>
-        </div>
-        <div class="col-sm-8">
-          <%= f.search_field :title_cont,  class:'form-control' %>
-        </div>
-        <div class="form-group col-sm-2">
-          <%= f.submit '検索', class: 'btn btn-primary' %>
-        </div>
-      <% end %>
+            <h1>Questions</h1>
+            <%= search_form_for @q, class: 'mb-5' do |f| %>
+                <div class="from-group.row">
+                    <%= f.label :title_cont, "タイトル", class:'col-sm-2 col-form-label' %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.search_field :title_cont,  class:'form-control' %>
+                </div>
+                <div class="form-group col-sm-2">
+                    <%= f.submit '検索', class: 'btn btn-primary' %>
+                </div>
+            <% end %>
 <!-- =================================================================== -->
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>質問者</th>
-            <th>Title</th>
-            <th>Body</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>質問者</th>
+                        <th>タイトル</th>
+                        <th>投稿日時</th>
+                        <th></th>
+                        <th colspan="3"></th>
+                    </tr>
+                </thead>
 
 
-<!-- ======================= 検索した時のレビュー ============================ -->
-        <tbody>
-          <% @search_questions.each do |question| %>
-            <tr>
-              <td><%= question.end_user.name %></td>
-              <td><%= question.title %></td>
-              <td><%= question.body %></td>
-              <td><%= link_to 'Show', question %></td>
-              <% if current_end_user.nil? %>
-                <td></td>
-                <td></td>
-              <% elsif question.end_user.id == current_end_user.id %>
-                <td><%= link_to '編集', edit_question_path(question) %></td>
-                <td><%= link_to '削除', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-<!-- ===================================================================== -->
-      <br>
-      <div class="sm-3">
-        <p><%= paginate @search_questions %></p>
-        <p><%= page_entries_info @search_questions %></p>
-      </div>
+                <!-- ================= 検索した時のレビュー ================== -->
+                <tbody>
+                    <% @search_questions.each do |question| %>
+                        <tr>
 
-      <%= link_to '新しく質問する', new_question_path, class: "btn btn-default" %>
+                                <td style="height: 80px;"><%= question.end_user.name %></td>
+                                <td style="width: 50%;"><%= question.title %></td>
+                                <td><%= question.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+                                <td><%= question.answers.count %>個の回答があります。</td>
+                                <td><%= link_to 'Show', question, class: "btn btn-default" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <!-- ======================================================== -->
+            <br>
+            <div class="clearfix">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <%= link_to '新しく質問する', new_question_path, class: "btn btn-default btn-block"  %>
+                </div>
+            </div>
 
+            <!-- ================== ページネーション　================  -->
+
+            <div class="sm-3" style="text-align: center;">
+                <p><%= paginate @search_questions %></p>
+                <p><%= page_entries_info @search_questions %></p>
+            </div>
+
+            <!-- ==================================================  -->
+
+        </div>
     </div>
-  </div>
 </div>
