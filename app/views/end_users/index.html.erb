@@ -23,13 +23,13 @@
 				<% @end_users.each do |end_user| %>
 				    <tr>
 					    <td><%= end_user.name %></td>
-					    <td><%=link_to "show", end_user_path(end_user.id), class: "btn btn-default" %></td>
+					    <td><%=link_to "show", end_user_path(end_user.id), class: "btn btn-default " %></td>
 					    <td>
 							<% if current_end_user != end_user %>
 								<% if end_user.followed_by?(current_end_user) %>
-									<p><%=link_to "フォロー済み", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-danger" %></p>
+									<p><%=link_to "フォロー済み", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-danger pull-right" %></p>
 								<% else %>
-									<p><%=link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-default" %></p>
+									<p><%=link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-default pull-right" %></p>
 								<% end %>
 							<% end %>
 							</td>
