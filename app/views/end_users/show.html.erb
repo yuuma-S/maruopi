@@ -41,13 +41,15 @@
 	        <tbody>
 				<% @questions.each do |question| %>
 					<tr>
-						<td style="width: 600px;"><%= question.title %></td>
-						<td><%= link_to 'Show', question %></td>
+						<td style="width: 600px; word-break: break-word;">
+							<%= question.title %>
+						</td>
+						<td><%= link_to 'Show', question, class: "btn btn-default" %></td>
 						<% if current_end_user.nil? %>
 							<td></td>
 							<td></td>
 						<% elsif question.end_user.id == current_end_user.id %>
-							<td><%= link_to '削除', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<td><%= link_to '削除', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
 						<% end %>
 					</tr>
 				<% end %>
