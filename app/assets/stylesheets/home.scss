@@ -1,0 +1,87 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top-image{
+	height: 500px;
+	width: 100%;
+	background-image:url(../assets/maruopi1.jpg);
+	background-size: 100% 100%;
+	margin-bottom: 20px;
+}
+
+.top-title{
+	background-image:url(../assets/maruopi2.jpg);
+	background-size: 100% 100%;
+	text-align: center;
+	color: black;
+	font-size: 100px;
+	font-family: cursive, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+}
+
+.explain{
+	font-size: 45px;
+	font-family: cursive, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+	text-align: center;
+}
+
+.explain-show{
+	margin-top: 20px;
+	width: 100%;
+	hight: 500px;
+	text-align: center;
+}
+
+.some-question{
+	height: 600px;
+	width: 100%;
+	background-image:url(../assets/maruopi3.jpg);
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.one-question-1{
+	height: 300px;
+	width: 300px;
+	background-image:url(../assets/maruopi4.jpg);
+	background-size: 100% 100%;
+	position: absolute;
+	top: 10;
+	left: 0px;
+	opacity : 0;
+  	transform: translateY(20px);
+  	transition: all 1s;
+  	text-align: center;
+  	line-height: 300px;
+}
+
+.one-question-2{
+	height: 300px;
+	width: 300px;
+	background-image:url(../assets/maruopi4.jpg);
+	background-size: 100% 100%;
+	position: absolute;
+	top: 10;
+	left: 380px;
+	opacity : 0;
+  	transform: translateY(20px);
+  	transition: all 1s;
+  	text-align: center;
+  	line-height: 300px;
+}
+
+.one-question-3{
+	height: 300px;
+	width: 300px;
+	background-image:url(../assets/maruopi4.jpg);
+	background-size: 100% 100%;
+	position: absolute;
+	top: 10;
+	left: 790px;
+	opacity : 0;
+  	transform: translateY(20px);
+  	transition: all 1s;
+  	text-align: center;
+  	line-height: 300px;
+}
