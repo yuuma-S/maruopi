@@ -17,12 +17,19 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.logo{
+	font-size: 32px;
+	font-family: cursive, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+	float: left;
+	margin-left: 10px;
+}
+
 .container {
     width: 100%;
 }
 header{
     width: 100%;
-    height: 65px;
+    height: 50px;
     background-color: #add8e6;
 }
 
