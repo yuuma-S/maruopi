@@ -6,13 +6,13 @@
 .top-image{
 	height: 500px;
 	width: 100%;
-	background-image:url(../assets/maruopi1.jpg);
+	background-image:image-url("maruopi1.jpg");
 	background-size: 100% 100%;
 	margin-bottom: 20px;
 }
 
 .top-title{
-	background-image:url(../assets/maruopi2.jpg);
+	background-image:image-url("maruopi2.jpg");
 	background-size: 100% 100%;
 	text-align: center;
 	color: black;
@@ -36,7 +36,7 @@
 .some-question{
 	height: 600px;
 	width: 100%;
-	background-image:url(../assets/maruopi3.jpg);
+	background-image:image-url("maruopi3.jpg");
 	background-size: 100% 100%;
 	position: relative;
 }
@@ -44,7 +44,7 @@
 .one-question-1{
 	height: 300px;
 	width: 300px;
-	background-image:url(../assets/maruopi4.jpg);
+	background-image:image-url("maruopi4.jpg");
 	background-size: 100% 100%;
 	position: absolute;
 	top: 10;
@@ -59,7 +59,7 @@
 .one-question-2{
 	height: 300px;
 	width: 300px;
-	background-image:url(../assets/maruopi4.jpg);
+	background-image:image-url("maruopi4.jpg");
 	background-size: 100% 100%;
 	position: absolute;
 	top: 10;
@@ -74,7 +74,7 @@
 .one-question-3{
 	height: 300px;
 	width: 300px;
-	background-image:url(../assets/maruopi4.jpg);
+	background-image:image-url("maruopi4.jpg");
 	background-size: 100% 100%;
 	position: absolute;
 	top: 10;
