@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answers = @question.answers.all.order(favorites_count: :desc)
+    @answers = @question.answers.all
     @search = Answer.ransack(params[:q])
     @all_ranks = Answer.find(Favorite.group(:answer_id).order('count(answer_id) desc').pluck(:answer_id))
 
