@@ -68,7 +68,8 @@
 						<div class="panel-body">
 							<p>
 							  <strong>回答内容</strong><br>
-							  <%= answer.body %>
+							  <% text = answer.body %>
+							  <%= raw Rinku.auto_link(simple_format(h(text))) %>
 							</p>
 							<%= link_to '詳細',question_answer_path(@question, answer),class: "btn btn-default" %>
 						</div>
