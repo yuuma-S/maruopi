@@ -46,9 +46,8 @@
 			<p><%= @question.answers.count %>件の回答があります。<p>
 			<% if @question.answers.count != 0 %>
 
-	    		<div class="panel panel-info" style="word-break: break-word;">
-
-					<% @answers.each do |answer| %>
+				<% @answers.each do |answer| %>
+					<div class="panel panel-info" style="word-break: break-word;">
 						<div class="panel-heading" style="margin-bottom: 10px;">
 							<strong>回答者</strong>
 							<%= answer.end_user.name %>
@@ -68,11 +67,12 @@
 						<div class="panel-body">
 							<p>
 							  <strong>回答内容</strong><br>
-							  <%= answer.body %>
+							  <%= raw Rinku.auto_link(simple_format(h(answer.body))) %>
 							</p>
 							<%= link_to '詳細',question_answer_path(@question, answer),class: "btn btn-default" %>
 						</div>
-					<% end %>
+					</div>
+				<% end %>
 				<% else %>
 					<div class="well" style="text-align: center">
 						<strong>まだ回答がありません</strong><br>
