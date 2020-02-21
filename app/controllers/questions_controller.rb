@@ -19,8 +19,6 @@ class QuestionsController < ApplicationController
   def show
     @answers = @question.answers.all
     @search = Answer.ransack(params[:q])
-    @all_ranks = Answer.find(Favorite.group(:answer_id).order('count(answer_id) desc').pluck(:answer_id))
-
     @comment = Comment.new
   end
 
