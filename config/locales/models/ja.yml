@@ -1,0 +1,20 @@
+# ja:
+#   activerecord:
+#     models:
+#       question: 質問
+#       answer: 回答
+#       end_user: ユーザー
+#       comment: コメント
+#       favorite: いいね
+#       relationship: フォロー/フォロワー
+#     attributes:
+#       question:
+#         title: 質問タイトル
+#         body: 質問内容
+#       answer:
+#         title:　回答タイトル
+#         body: 回答内容
+#       end_user:
+#         name: 名前
+#       comment:
+#         body: コメント

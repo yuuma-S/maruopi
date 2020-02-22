@@ -79,4 +79,5 @@ gem 'kaminari','~> 1.1.1'
 gem 'ransack'
 gem 'better_errors'
 gem 'rinku'
+gem 'rails-i18n'
 
