@@ -2,15 +2,19 @@
 <h4>コメント一覧</h4>
 <% question.comments.each do |comment| %>
   <tr>
-    <div class="comment-author clearfix">
-      <%= link_to end_user_path(comment.end_user), class: "end_user_#{comment.end_user.id}" do %>
-      	<%= comment.end_user.name %>
+    <div class="comment-box clearfix">
+      <div class="comment-author clearfix">
+        <%= link_to end_user_path(comment.end_user), class: "end_user_#{comment.end_user.id}" do %>
+          <%= comment.end_user.name %>
+        <% end %>
+        <div class="pull-right">
+          投稿日時 : <%= comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
+      </div>
+      <% if comment.end_user == current_end_user %>
+      <span><%= comment.body %></span><%= link_to '削除',question_comment_path(question, comment),class: 'btn btn-danger pull-right', style: "margin: 0 auto;" , method: :delete, remote: true %>
       <% end %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %>
-    </div>
-    <% if comment.end_user == current_end_user %>
-    <span><%= comment.body %></span><%= link_to '削除',question_comment_path(question, comment),class: 'btn btn-danger', method: :delete, remote: true %>
-    <% end %>
-  </tr>
+    </tr>
+  </div>
 <% end %>
 
