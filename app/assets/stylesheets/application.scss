@@ -17,31 +17,44 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.container {
+    width: 100%;
+}
+
+/* ヘッダーレイアウト */
+header{
+	margin-bottom: 10px;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(45deg, #add8e6, #6495ed)
+}
+
 .logo{
 	font-size: 32px;
 	font-family: cursive, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 	float: left;
 	margin-left: 10px;
-}
-
-.container {
-    width: 100%;
-}
-header{
-	margin-bottom: 10px;
-    width: 100%;
-    height: 50px;
-    background-color: #add8e6;
+	line-height: 60px;
 }
 
 .end-user-header-nav{
 	width: 25%;
-	height: 50px;
-	line-height: 50px;
+	height: 60px;
+	line-height: 60px;
 	float: right;
-	margin-right: 0px;
+	color: white;
+	font-size: 16px;
 }
 
+.fas{
+	color: white;
+}
+
+.fas:hover{
+	background-color: #1e90ff;
+	padding: 20px 0px;
+	transition: background-color 0.5s;
+}
 
 .panel-body{
 	margin-bottom: 10px;
